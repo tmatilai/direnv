@@ -135,8 +135,10 @@ direnv_layout_dir() {
 log_status() {
   if [[ -n $DIRENV_LOG_FORMAT ]]; then
     local msg=$*
+    local color_normal
+    color_normal=$(tput sgr0)
     # shellcheck disable=SC2059,SC1117
-    printf "${DIRENV_LOG_FORMAT}\n" "$msg" >&2
+    printf "${color_normal}${DIRENV_LOG_FORMAT}\n" "$msg" >&2
   fi
 }
 
@@ -152,12 +154,12 @@ log_status() {
 #    log_error "Unable to find specified directory!"
 
 log_error() {
-  local color_normal
-  local color_error
-  color_normal=$(tput sgr0)
-  color_error=$(tput setaf 1)
   if [[ -n $DIRENV_LOG_FORMAT ]]; then
     local msg=$*
+    local color_normal
+    local color_error
+    color_normal=$(tput sgr0)
+    color_error=$(tput setaf 1)
     # shellcheck disable=SC2059,SC1117
     printf "${color_error}${DIRENV_LOG_FORMAT}${color_normal}\n" "$msg" >&2
   fi
