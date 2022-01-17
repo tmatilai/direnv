@@ -10,6 +10,8 @@ direnv -- unclutter your .profile
 new feature that can load and unload environment variables depending on the
 current directory.
 
+**⚠️  This is a custom branch for testing.**
+
 ## Use cases
 
 * Load 12factor apps environment variables
